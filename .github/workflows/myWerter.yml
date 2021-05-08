@@ -4,8 +4,8 @@ name: TE的天气 Weater
 # 这个部分用来指定能够触发工作流执行的事件
 on:
   # 当对分支main进行push操作的时候，这个工作流就被触发了
-  push:
-    branches: [ main ]
+  watch:                                                        # 监视操作
+    types: [started]                                            # 点击 Star 之后
   schedule:
     - cron: 0 23 * * *
 
