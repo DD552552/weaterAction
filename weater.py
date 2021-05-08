@@ -28,14 +28,14 @@ def ServerPush(info): #Server酱推送
 def CoolPush(info): #CoolPush酷推
     # cpurl = 'https://push.xuthus.cc/group/'+spkey   #推送到QQ群
     # cpurl = 'https://push.xuthus.cc/send/' + SKey  # 推送到个人QQ
-    api='https://push.xuthus.cc/send/{}'.format(SKey)
+    api='https://push.xuthus.cc/group/{}'.format(SKey)
     print(api)
     print(info)
     requests.post(api, info.encode('utf-8'))
 def main():
     try:
         api = 'http://t.weather.itboy.net/api/weather/city/'             #API地址，必须配合城市代码使用
-        city_code = '101240701'   #进入https://where.heweather.com/index.html查询你的城市代码
+        city_code = '101180502'   #进入https://where.heweather.com/index.html查询你的城市代码
         tqurl = api + city_code
         response = requests.get(tqurl)
         d = response.json()         #将数据以json形式返回，这个d就是返回的json数据
@@ -57,13 +57,13 @@ def main():
             ganmao = d["data"]["ganmao"] #感冒指数
             tips = d["data"]["forecast"][0]["notice"] #温馨提示
             # 天气提示内容
-            tdwt = "【今日份天气】\n城市： " + parent + city + \
-                   "\n日期： " + date + "\n星期: " + week + "\n天气: " + weather_type + "\n温度: " + wendu_high + " / "+ wendu_low + "\n湿度: " + \
-                    shidu + "   \nPM2.5 :  "+  pm25  +    " \nPM10: " + pm10 + "\n空气质量: " + quality + \
-                   "\n风力风向: " + fx + fl + "\n感冒指数: "  + ganmao + "\n温馨提示：" + tips + "\n更新时间:       "+ update_time +      "\n✁------------------------------\n" + get_iciba_everyday()
+            tdwt = "【今日份天气】\n城市:" + parent + city + \
+                   "\n日期:" + date + "\n星期:" + week + "\n天气:" + weather_type + "\n温度:" + wendu_high + " / "+ wendu_low + "\n湿度: " + \
+                    shidu + "\n空气质量:" + pm25 +"\nPM10: " + pm10 + "\n空气质量: " + quality + \
+                   "\n风力风向: " + fx + fl + "\n感冒指数: "  + ganmao + "\n温馨提示:" + tips + "\n更新时间:                       " + update_time +                          "\n✁-----------------------------------------\n" + get_iciba_everyday()
             # print(tdwt)
             # requests.post(cpurl,tdwt.encode('utf-8'))         #把天气数据转换成UTF-8格式，不然要报错。
-            ServerPush(tdwt)
+            # ServerPush(tdwt)
             CoolPush(tdwt)
     except Exception:
         error = '【出现错误】\n　　今日天气推送错误，请检查服务或网络状态！'
@@ -72,4 +72,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
