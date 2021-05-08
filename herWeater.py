@@ -12,7 +12,7 @@ def get_iciba_everyday():
     bee = eed.json()  #返回的数据
     english = bee['content']
     zh_CN = bee['note']
-    str = '【奇怪的知识】\n' + english + '\n' + zh_CN
+    str = '【每日一句】\n' + english + '\n' + zh_CN
     return str
 
 def ServerPush(info): #Server酱推送
@@ -35,7 +35,7 @@ def CoolPush(info): #CoolPush酷推
 def main():
     try:
         api = 'http://t.weather.itboy.net/api/weather/city/'             #API地址，必须配合城市代码使用
-        city_code = '101040800'   #进入https://where.heweather.com/index.html查询你的城市代码
+        city_code = '101240701'   #进入https://where.heweather.com/index.html查询你的城市代码
         tqurl = api + city_code
         response = requests.get(tqurl)
         d = response.json()         #将数据以json形式返回，这个d就是返回的json数据
