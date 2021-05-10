@@ -7,7 +7,7 @@ on:
   watch:                                                        # 监视操作
     types: [started]                                            # 点击 Star 之后
   schedule:
-    - cron: 0 23 * * *
+    - cron: 55 22 * * *
 
 
 
